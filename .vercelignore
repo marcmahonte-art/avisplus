@@ -1,0 +1,35 @@
+# Fichiers exclus de l'upload Vercel (le build repart des sources).
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# Données locales de l'outil
+.workbuddy-ai/
+.vscode/
+.idea/
+
+# Fichiers de travail non nécessaires au build
+avis/
+Linq_*
+ChatGPT Image*
+concurent.txt
+prompt page digitales premium.txt
+tu te rappel*
+custom-hub.webp
+hero-card-front-*.webp
+hub-standard-black.webp
+hub-tech-details*.png
+phone-hand*.png
+TapIn-Local-White-Stand-Mockup-Transparent.avif
+TOTEM-AVIS-GOOGLE-*.jpg
+avis-*.zip
+*.docx
+*.eps
+*.tsbuildinfo
+
+# Secrets
+.env
+.env.*
+!.env.example

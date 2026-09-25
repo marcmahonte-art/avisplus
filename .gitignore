@@ -9,6 +9,9 @@ build/
 out/
 *.tsbuildinfo
 
+# Vercel
+.vercel/
+
 # Environnement & secrets
 .env
 .env.*
@@ -44,3 +47,5 @@ avis-*.zip
 *.docx
 # Images de travail générées (noms UUID)
 [0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]-*.png
+
+.vercel
