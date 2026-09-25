@@ -1,0 +1,45 @@
+# Dépendances
+node_modules/
+vendor/
+
+# Build
+dist/
+build/
+.next/
+out/
+
+# Environnement & secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Données locales de l'outil
+.workbuddy-ai/
+.DS_Store
+Thumbs.db
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+
+# Fichiers de travail locaux (non versionnés)
+# Snapshots et assets bruts utilisés pendant la conception
+Linq_*
+ChatGPT Image*
+concurent.txt
+prompt page digitales premium.txt
+tu te rappel*
+custom-hub.webp
+hero-card-front-*.webp
+hub-standard-black.webp
+hub-tech-details*.png
+phone-hand*.png
+TapIn-Local-White-Stand-Mockup-Transparent.avif
+TOTEM-AVIS-GOOGLE-*.jpg
+avis-*.zip
+*.docx
+# Images de travail générées (noms UUID)
+[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]-*.png

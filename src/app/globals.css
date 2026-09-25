@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   AVIS+ — Tokens CSS (DESIGN_SYSTEM_AVIS_PLUS.md §40)
+   ========================================================================== */
+
+:root {
+  --color-black: #050505;
+  --color-text: #475569;
+  --color-muted: #64748b;
+
+  --color-border: #e2e8f0;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f8fafc;
+
+  --color-primary: #ffb82e;
+  --color-primary-hover: #f4a91f;
+  --color-primary-light: #fff4d8;
+  --color-primary-dark: #c98200;
+
+  --color-success: #16a34a;
+  --color-warning: #f59e0b;
+  --color-error: #dc2626;
+  --color-info: #2563eb;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-pill: 9999px;
+
+  /* §36 — Z-index */
+  --z-base: 0;
+  --z-content: 10;
+  --z-header: 50;
+  --z-dropdown: 100;
+  --z-modal: 200;
+  --z-toast: 300;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-avis-text font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+    font-variation-settings: "opsz" 32;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-avis-black;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* §37 — Accessibilité : focus toujours visible */
+  :focus-visible {
+    @apply outline-none ring-2 ring-avis-primary ring-offset-2 ring-offset-white;
+  }
+
+  ::selection {
+    background-color: var(--color-primary-light);
+    color: var(--color-black);
+  }
+}
+
+@layer components {
+  /* §34 — Container */
+  .avis-container {
+    @apply mx-auto w-full max-w-container px-5 md:px-6 lg:px-8;
+  }
+
+  /* §4 — Eyebrow */
+  .avis-eyebrow {
+    @apply text-eyebrow uppercase text-avis-text;
+  }
+
+  /* §19 — Hauteur de header */
+  .avis-header-height {
+    height: 72px;
+  }
+
+  @screen lg {
+    .avis-header-height {
+      height: 88px;
+    }
+  }
+
+  /* Masque les scrollbars des listes horizontales (mobile) sans perdre le scroll */
+  .avis-scroll-x {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .avis-scroll-x::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Motif d'arrière-plan discret utilisé derrière le Hero */
+  .avis-grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(5, 5, 5, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(5, 5, 5, 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+}
+
+/* §32 — Respect des préférences de mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
