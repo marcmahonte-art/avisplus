@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ExternalLink, Eye } from "lucide-react";
+import { ExternalLink, Eye, Plus } from "lucide-react";
 
 import { CategoryFilter } from "@/components/ui/category-filter";
 import { DataTable, type DataTableColumn } from "@/components/admin/data-table";
 import { AdminPageHeader } from "@/components/admin/stat-card";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { getBusinessesGroupedByCategory, getPageEvents } from "@/lib/data";
 import type { Business } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
@@ -107,6 +108,14 @@ export default async function AdminPagesPage({
       <AdminPageHeader
         title="Pages digitales"
         description="Une page par entreprise, accessible à une URL stable. Modifier une page ne change jamais le QR Code ni la puce NFC."
+        actions={
+          <Button
+            href="/admin/entreprises/nouvelle"
+            icon={<Plus size={18} strokeWidth={1.8} aria-hidden="true" />}
+          >
+            Nouvelle page digitale
+          </Button>
+        }
       />
 
       {/* Classement par catégorie — référentiel `categorie.md` */}
