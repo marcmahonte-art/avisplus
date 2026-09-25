@@ -1,9 +1,11 @@
 # Fichiers exclus de l'upload Vercel (le build repart des sources).
 node_modules/
 .next/
+.next-old-*/
 out/
 build/
 dist/
+*.tsbuildinfo
 
 # Données locales de l'outil
 .workbuddy-ai/
