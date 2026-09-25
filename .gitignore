@@ -25,6 +25,9 @@ out/
 .DS_Store
 Thumbs.db
 
+# Artefacts produits par l'outil (rendus de diagrammes, exports temporaires)
+avis/*.html
+
 # Éditeurs
 .vscode/
 .idea/
