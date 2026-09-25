@@ -6,6 +6,7 @@ vendor/
 dist/
 build/
 .next/
+.next-old-*/
 out/
 *.tsbuildinfo
 

@@ -6,7 +6,9 @@ import { Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Field, Input, Select, Textarea } from "@/components/ui/input";
+import { CategorySelect } from "@/components/admin/category-select";
 import { saveBusiness, type BusinessActionState } from "@/app/admin/(protected)/entreprises/actions";
+import type { BusinessCategoryDef } from "@/lib/categories";
 import type { Business } from "@/lib/types";
 
 const INITIAL: BusinessActionState = { ok: false, message: null };
@@ -15,7 +17,13 @@ const INITIAL: BusinessActionState = { ok: false, message: null };
  * Éditeur de page digitale — cahier des charges §24.
  * Sections : identité, contact, localisation, réseaux, avis, site, apparence.
  */
-export function BusinessEditor({ business }: { business?: Business }) {
+export function BusinessEditor({
+  business,
+  categories,
+}: {
+  business?: Business;
+  categories: readonly BusinessCategoryDef[];
+}) {
   const [state, formAction, pending] = useActionState(saveBusiness, INITIAL);
 
   return (
@@ -39,15 +47,11 @@ export function BusinessEditor({ business }: { business?: Business }) {
             <Input id="biz-slug" name="slug" required defaultValue={business?.slug ?? ""} />
           </Field>
 
-          <Field label="Catégorie" htmlFor="biz-category" required>
-            <Input
-              id="biz-category"
-              name="category"
-              required
-              defaultValue={business?.category ?? ""}
-              placeholder="Ex. Restaurant & Grill"
-            />
-          </Field>
+          <CategorySelect
+            categories={categories}
+            defaultCategoryId={business?.categoryId}
+            defaultSubcategory={business?.subcategory}
+          />
 
           <Field label="Template de page" htmlFor="biz-template" required>
             <Select id="biz-template" name="template" defaultValue={business?.template ?? "professionnel"}>

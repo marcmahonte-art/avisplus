@@ -471,12 +471,12 @@ export const QR_CODES: QrCodeRecord[] = [
 /* -------------------------------------------------------------------------- */
 
 export const REALISATIONS: Realisation[] = [
-  { id: "rea_1", businessName: "Le Terroir", category: "Restaurant & Grill", city: "Ouagadougou", supportType: "Plaque A5 — base bois", imageUrl: "/images/presentation-bois-nfc-qr.png", published: true, installedAt: "2026-09-22T10:30:00.000Z" },
-  { id: "rea_2", businessName: "Belle & Moi", category: "Salon de beauté", city: "Ouagadougou", supportType: "Pack Commerce", imageUrl: "/images/presentation-noir-nfc-qr.png", published: true, installedAt: "2026-09-15T11:40:00.000Z" },
-  { id: "rea_3", businessName: "Le Délice", category: "Restaurant & Grill", city: "Ouagadougou", supportType: "Plaque A5 — base bois", imageUrl: "/images/totem-avis-google.jpg", published: true, installedAt: "2026-08-14T10:15:00.000Z" },
-  { id: "rea_4", businessName: "Le Coin Mode", category: "Boutique de mode", city: "Ouagadougou", supportType: "Cartes + sticker", imageUrl: "/images/supports-personnalises.webp", published: true, installedAt: "2026-08-30T10:00:00.000Z" },
-  { id: "rea_5", businessName: "Pharmacie du Progrès", category: "Pharmacie", city: "Ouagadougou", supportType: "Plaque A5 — noir mat", imageUrl: "/images/support-noir.webp", published: true, installedAt: "2026-07-19T09:00:00.000Z" },
-  { id: "rea_6", businessName: "Hôtel Bangr-Weoogo", category: "Hôtel", city: "Ouagadougou", supportType: "Plaque murale", imageUrl: "/images/support-details-techniques.png", published: false, installedAt: "2026-09-24T09:15:00.000Z" },
+  { id: "rea_1", businessName: "Le Terroir", category: "Restauration › Grillades", categoryId: "restauration", subcategory: "Grillades", city: "Ouagadougou", supportType: "Plaque A5 — base bois", imageUrl: "/images/presentation-bois-nfc-qr.png", published: true, installedAt: "2026-09-22T10:30:00.000Z" },
+  { id: "rea_2", businessName: "Belle & Moi", category: "Beauté et soins esthétiques › Instituts de beauté", categoryId: "beaute", subcategory: "Instituts de beauté", city: "Ouagadougou", supportType: "Pack Commerce", imageUrl: "/images/presentation-noir-nfc-qr.png", published: true, installedAt: "2026-09-15T11:40:00.000Z" },
+  { id: "rea_3", businessName: "Le Délice", category: "Restauration › Restaurants", categoryId: "restauration", subcategory: "Restaurants", city: "Ouagadougou", supportType: "Plaque A5 — base bois", imageUrl: "/images/totem-avis-google.jpg", published: true, installedAt: "2026-08-14T10:15:00.000Z" },
+  { id: "rea_4", businessName: "Le Coin Mode", category: "Mode et habillement › Boutiques de vêtements", categoryId: "mode-habillement", subcategory: "Boutiques de vêtements", city: "Ouagadougou", supportType: "Cartes + sticker", imageUrl: "/images/supports-personnalises.webp", published: true, installedAt: "2026-08-30T10:00:00.000Z" },
+  { id: "rea_5", businessName: "Pharmacie du Progrès", category: "Santé › Pharmacies", categoryId: "sante", subcategory: "Pharmacies", city: "Ouagadougou", supportType: "Plaque A5 — noir mat", imageUrl: "/images/support-noir.webp", published: true, installedAt: "2026-07-19T09:00:00.000Z" },
+  { id: "rea_6", businessName: "Hôtel Bangr-Weoogo", category: "Hôtellerie › Hôtels", categoryId: "hotellerie", subcategory: "Hôtels", city: "Ouagadougou", supportType: "Plaque murale", imageUrl: "/images/support-details-techniques.png", published: false, installedAt: "2026-09-24T09:15:00.000Z" },
 ];
 
 /* -------------------------------------------------------------------------- */

@@ -8,7 +8,8 @@ import { AdminPageHeader } from "@/components/admin/stat-card";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { Button } from "@/components/ui/button";
 import { Card, DetailRow } from "@/components/ui/card";
-import { getBusinessById, getQrCodes, getSocialLinks } from "@/lib/data";
+import { getBusinessById, getBusinessCategories, getQrCodes, getSocialLinks } from "@/lib/data";
+import { getCategoryLabel } from "@/lib/categories";
 import { PLATFORM_LABELS } from "@/lib/status";
 import { formatDate, publicPageUrl } from "@/lib/utils";
 
@@ -27,9 +28,10 @@ export default async function AdminEntrepriseDetailPage({
     notFound();
   }
 
-  const [socialLinks, qrCodes] = await Promise.all([
+  const [socialLinks, qrCodes, categories] = await Promise.all([
     getSocialLinks(business.id),
     getQrCodes(),
+    getBusinessCategories(),
   ]);
 
   const businessQr = qrCodes.filter((qr) => qr.businessId === business.id);
@@ -62,7 +64,7 @@ export default async function AdminEntrepriseDetailPage({
 
       <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
         <div className="flex flex-col gap-6">
-          <BusinessEditor business={business} />
+          <BusinessEditor business={business} categories={categories} />
 
           {/* Réseaux sociaux */}
           <Card className="p-6">
@@ -145,6 +147,8 @@ export default async function AdminEntrepriseDetailPage({
             <h2 className="text-h4 text-avis-black">Support et configuration</h2>
 
             <dl className="mt-4 flex flex-col divide-y divide-avis-border">
+              <DetailRow label="Catégorie" value={getCategoryLabel(business.categoryId)} />
+              <DetailRow label="Sous-catégorie" value={business.subcategory ?? "—"} />
               <DetailRow label="Slug" value={business.slug} />
               <DetailRow label="Template" value={business.template} />
               <DetailRow label="Indexation Google" value={business.allowIndexing ? "Autorisée" : "Désactivée"} />

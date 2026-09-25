@@ -4,6 +4,11 @@ import {
   EMPTY_DIGITAL_CONTENT,
   SOCIAL_LINKS,
 } from "@/lib/mock/businesses";
+import {
+  BUSINESS_CATEGORIES,
+  getCategoryById,
+  type BusinessCategoryDef,
+} from "@/lib/categories";
 import { PRODUCTS } from "@/lib/mock/products";
 import {
   FAQ_ITEMS,
@@ -93,6 +98,70 @@ export async function getSocialLinks(businessId: string): Promise<SocialLink[]> 
   return SOCIAL_LINKS.filter((link) => link.businessId === businessId).sort(
     (a, b) => a.sortOrder - b.sortOrder,
   );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Catégories d'activité                                                       */
+/* -------------------------------------------------------------------------- */
+
+/** Un groupe de classement : une catégorie et les entreprises qui lui sont rattachées. */
+export interface CategoryGroup {
+  category: BusinessCategoryDef;
+  businesses: Business[];
+}
+
+/**
+ * Référentiel complet des catégories (`categorie.md`).
+ * Passe par cette fonction plutôt que d'importer la constante : lors du branchement
+ * de Supabase, le référentiel pourra devenir une table éditable.
+ */
+export async function getBusinessCategories(): Promise<readonly BusinessCategoryDef[]> {
+  return BUSINESS_CATEGORIES;
+}
+
+/** Nombre d'entreprises par identifiant de catégorie. */
+export async function getCategoryCounts(options?: {
+  status?: Business["status"];
+}): Promise<Record<string, number>> {
+  const businesses = await getBusinesses(options);
+  return businesses.reduce<Record<string, number>>((acc, business) => {
+    const key = business.categoryId || "non-classee";
+    acc[key] = (acc[key] ?? 0) + 1;
+    return acc;
+  }, {});
+}
+
+/**
+ * §23 — Entreprises regroupées par catégorie, dans l'ordre du référentiel.
+ * Seules les catégories contenant au moins une entreprise sont retournées.
+ * Les entreprises dont la catégorie est inconnue sont regroupées en fin de liste.
+ */
+export async function getBusinessesGroupedByCategory(options?: {
+  status?: Business["status"];
+}): Promise<CategoryGroup[]> {
+  const businesses = await getBusinesses(options);
+
+  const groups = BUSINESS_CATEGORIES.map((category) => ({
+    category,
+    businesses: businesses.filter((business) => business.categoryId === category.id),
+  })).filter((group) => group.businesses.length > 0);
+
+  // Entreprises dont la catégorie ne correspond à aucune entrée du référentiel.
+  const orphans = businesses.filter((business) => !getCategoryById(business.categoryId));
+  if (orphans.length > 0) {
+    groups.push({
+      category: {
+        id: "non-classee",
+        label: "Non classées",
+        description: "Entreprises à rattacher à une catégorie du référentiel.",
+        priority: "C",
+        subcategories: [],
+      },
+      businesses: orphans,
+    });
+  }
+
+  return groups;
 }
 
 /* -------------------------------------------------------------------------- */

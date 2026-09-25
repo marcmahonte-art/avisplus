@@ -2,18 +2,38 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ExternalLink, Eye } from "lucide-react";
 
+import { CategoryFilter } from "@/components/ui/category-filter";
 import { DataTable, type DataTableColumn } from "@/components/admin/data-table";
 import { AdminPageHeader } from "@/components/admin/stat-card";
 import { StatusBadge } from "@/components/admin/status-badge";
-import { getBusinesses, getPageEvents } from "@/lib/data";
+import { Badge } from "@/components/ui/badge";
+import { getBusinessesGroupedByCategory, getPageEvents } from "@/lib/data";
 import type { Business } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = { title: "Pages digitales" };
 
 /** Gestion des pages digitales — cahier des charges §24. */
-export default async function AdminPagesPage() {
-  const [businesses, events] = await Promise.all([getBusinesses(), getPageEvents()]);
+export default async function AdminPagesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ categorie?: string }>;
+}) {
+  const { categorie } = await searchParams;
+
+  const [groups, events] = await Promise.all([
+    getBusinessesGroupedByCategory(),
+    getPageEvents(),
+  ]);
+
+  // Le filtre n'accepte qu'une catégorie réellement présente dans les données.
+  const activeCategoryId = groups.some((group) => group.category.id === categorie)
+    ? categorie
+    : undefined;
+
+  const visibleGroups = activeCategoryId
+    ? groups.filter((group) => group.category.id === activeCategoryId)
+    : groups;
 
   const viewsByBusiness = events.reduce<Record<string, number>>((acc, event) => {
     if (event.eventType === "PAGE_VIEW") {
@@ -41,11 +61,11 @@ export default async function AdminPagesPage() {
       ),
     },
     {
-      key: "tagline",
-      header: "Accroche",
+      key: "category",
+      header: "Classement",
       render: (business) => (
-        <span className="line-clamp-2 max-w-xs text-body-sm text-avis-text">
-          {business.tagline ?? "—"}
+        <span className="flex flex-col items-start gap-1">
+          <Badge tone="neutral">{business.subcategory ?? "Catégorie seule"}</Badge>
         </span>
       ),
     },
@@ -89,11 +109,46 @@ export default async function AdminPagesPage() {
         description="Une page par entreprise, accessible à une URL stable. Modifier une page ne change jamais le QR Code ni la puce NFC."
       />
 
-      <DataTable
-        columns={columns}
-        rows={businesses}
-        emptyMessage="Aucune page digitale pour le moment."
+      {/* Classement par catégorie — référentiel `categorie.md` */}
+      <CategoryFilter
+        items={groups.map((group) => ({
+          category: group.category,
+          count: group.businesses.length,
+        }))}
+        activeCategoryId={activeCategoryId}
+        basePath="/admin/pages"
       />
+
+      {visibleGroups.length > 0 ? (
+        <div className="flex flex-col gap-8">
+          {visibleGroups.map((group) => (
+            <section key={group.category.id} className="flex flex-col gap-3">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <div>
+                  <h2 className="text-h4 text-avis-black">{group.category.label}</h2>
+                  <p className="mt-0.5 text-caption text-avis-muted">
+                    {group.category.description}
+                  </p>
+                </div>
+                <p className="text-body-sm font-medium text-avis-text">
+                  {group.businesses.length}{" "}
+                  {group.businesses.length > 1 ? "pages" : "page"}
+                </p>
+              </div>
+
+              <DataTable
+                columns={columns}
+                rows={group.businesses}
+                emptyMessage="Aucune page dans cette catégorie."
+              />
+            </section>
+          ))}
+        </div>
+      ) : (
+        <p className="rounded-lg border border-dashed border-avis-border bg-avis-soft px-6 py-14 text-center text-body text-avis-muted">
+          Aucune page digitale pour le moment.
+        </p>
+      )}
 
       <div className="rounded-xl border border-avis-border bg-white p-6">
         <h2 className="text-body font-semibold text-avis-black">
@@ -104,9 +159,9 @@ export default async function AdminPagesPage() {
         </p>
         <ul className="mt-4 flex flex-wrap gap-3">
           {[
-            { slug: "le-terroir", label: "Le Terroir — Restaurant" },
-            { slug: "belle-et-moi", label: "Belle & Moi — Salon" },
-            { slug: "le-coin-mode", label: "Le Coin Mode — Boutique" },
+            { slug: "le-terroir", label: "Le Terroir — Restauration" },
+            { slug: "belle-et-moi", label: "Belle & Moi — Beauté" },
+            { slug: "le-coin-mode", label: "Le Coin Mode — Mode" },
           ].map((demo) => (
             <li key={demo.slug}>
               <Link

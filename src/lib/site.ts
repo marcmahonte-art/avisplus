@@ -37,6 +37,7 @@ export const MAIN_NAV = [
   { label: "Nos produits", href: "/produits" },
   { label: "Comment ça marche ?", href: "/comment-ca-marche" },
   { label: "Nos réalisations", href: "/realisations" },
+  { label: "Exemples", href: "/exemples" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ] as const;
@@ -57,6 +58,7 @@ export const FOOTER_NAV = [
     links: [
       { label: "Comment ça marche ?", href: "/comment-ca-marche" },
       { label: "Nos réalisations", href: "/realisations" },
+      { label: "Exemples de pages", href: "/exemples" },
       { label: "Questions fréquentes", href: "/faq" },
       { label: "Nous contacter", href: "/contact" },
     ],

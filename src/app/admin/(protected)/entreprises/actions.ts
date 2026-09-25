@@ -2,6 +2,12 @@
 
 import { revalidatePath } from "next/cache";
 
+import {
+  formatCategoryLabel,
+  getSubcategories,
+  isKnownCategoryId,
+} from "@/lib/categories";
+
 /**
  * Server actions du back-office — entreprises et pages digitales.
  *
@@ -22,13 +28,32 @@ export async function saveBusiness(
 ): Promise<BusinessActionState> {
   const name = String(formData.get("name") ?? "").trim();
   const slug = String(formData.get("slug") ?? "").trim();
-  const category = String(formData.get("category") ?? "").trim();
   const city = String(formData.get("city") ?? "").trim();
 
-  if (!name || !slug || !category || !city) {
+  // La catégorie est choisie dans le référentiel `categorie.md` : le libellé affiché
+  // est toujours recalculé, jamais saisi à la main, pour éviter toute divergence.
+  const categoryId = String(formData.get("categoryId") ?? "").trim();
+  const rawSubcategory = String(formData.get("subcategory") ?? "").trim();
+  const subcategory = rawSubcategory === "" ? null : rawSubcategory;
+
+  if (!name || !slug || !categoryId || !city) {
     return {
       ok: false,
       message: "Le nom, le slug, la catégorie et la ville sont obligatoires.",
+    };
+  }
+
+  if (!isKnownCategoryId(categoryId)) {
+    return {
+      ok: false,
+      message: "Cette catégorie n'existe pas dans le référentiel. Choisissez-en une dans la liste.",
+    };
+  }
+
+  if (subcategory && !getSubcategories(categoryId).includes(subcategory)) {
+    return {
+      ok: false,
+      message: "La sous-catégorie choisie ne fait pas partie de cette catégorie.",
     };
   }
 
@@ -42,14 +67,16 @@ export async function saveBusiness(
   }
 
   const businessId = String(formData.get("businessId") ?? "");
+  const categoryLabel = formatCategoryLabel(categoryId, subcategory);
 
   // TODO(Supabase) : upsert dans `businesses`, puis revalidation des routes concernées.
   revalidatePath("/admin/entreprises");
+  revalidatePath("/admin/pages");
   if (businessId) revalidatePath(`/admin/entreprises/${businessId}`);
 
   return {
     ok: true,
-    message: `« ${name} » préparé pour l'enregistrement. La persistance sera activée avec la base de données.`,
+    message: `« ${name} » classé en « ${categoryLabel} ». La persistance sera activée avec la base de données.`,
   };
 }
 

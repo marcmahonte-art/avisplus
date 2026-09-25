@@ -108,7 +108,16 @@ export interface Business {
   /** §3 — Accroche courte affichée sous le nom. */
   tagline: string | null;
   description: string | null;
+  /**
+   * Libellé complet affiché (« Restauration › Maquis »).
+   * Toujours dérivé de `categoryId` + `subcategory` via `formatCategoryLabel()`,
+   * afin qu'il ne puisse jamais diverger du référentiel.
+   */
   category: string;
+  /** Référence au référentiel `BUSINESS_CATEGORIES` (ex. `restauration`). */
+  categoryId: string;
+  /** Sous-catégorie précise issue du référentiel (ex. `Maquis`). */
+  subcategory: string | null;
   phone: string | null;
   whatsapp: string | null;
   email: string | null;
@@ -295,7 +304,12 @@ export interface QrCodeRecord {
 export interface Realisation {
   id: string;
   businessName: string;
+  /** Libellé complet affiché, dérivé de `categoryId` + `subcategory`. */
   category: string;
+  /** Référence au référentiel `BUSINESS_CATEGORIES`. */
+  categoryId: string;
+  /** Sous-catégorie précise issue du référentiel. */
+  subcategory: string | null;
   city: string;
   supportType: string;
   imageUrl: string;

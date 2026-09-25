@@ -4,11 +4,14 @@ import { ArrowLeft } from "lucide-react";
 
 import { BusinessEditor } from "@/components/admin/business-editor";
 import { AdminPageHeader } from "@/components/admin/stat-card";
+import { getBusinessCategories } from "@/lib/data";
 
 export const metadata: Metadata = { title: "Nouvelle entreprise" };
 
 /** Création d'une entreprise — cahier des charges §23. */
-export default function AdminNouvelleEntreprisePage() {
+export default async function AdminNouvelleEntreprisePage() {
+  const categories = await getBusinessCategories();
+
   return (
     <div className="flex flex-col gap-8">
       <div>
@@ -27,7 +30,7 @@ export default function AdminNouvelleEntreprisePage() {
       />
 
       <div className="max-w-4xl">
-        <BusinessEditor />
+        <BusinessEditor categories={categories} />
       </div>
     </div>
   );

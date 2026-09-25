@@ -17,6 +17,7 @@ Le client final n'a **aucun compte à créer** et **aucune application à instal
 - [Stack technique](#stack-technique)
 - [Démarrage rapide](#démarrage-rapide)
 - [Routes](#routes)
+- [Classement par catégorie](#classement-par-catégorie)
 - [Architecture du code](#architecture-du-code)
 - [Design system](#design-system)
 - [Données et branchement Supabase](#données-et-branchement-supabase)
@@ -83,7 +84,8 @@ Back-office de démonstration : <http://localhost:3000/admin>
 /produits               Catalogue avec filtres par type
 /produits/[slug]        Fiche produit (galerie, caractéristiques, quantité, commande)
 /comment-ca-marche      Parcours en six étapes
-/realisations           Galerie des supports installés
+/realisations           Galerie des supports installés, filtrable par catégorie
+/exemples               Pages digitales publiées, classées par catégorie d'activité
 /faq                    Questions fréquentes
 /contact                Coordonnées et formulaire
 /commander              Formulaire de commande (sans compte)
@@ -119,6 +121,33 @@ Back-office de démonstration : <http://localhost:3000/admin>
 
 ---
 
+## Classement par catégorie
+
+Les pages digitales sont classées selon le référentiel d'activités de `categorie.md`
+(24 catégories et leurs sous-catégories) : restauration, hôtellerie, beauté, mode,
+cosmétiques, santé, immobilier, automobile, BTP, etc.
+
+Le référentiel vit dans `src/lib/categories.ts` :
+
+- `Business.categoryId` référence la catégorie, `Business.subcategory` la précision.
+- `Business.category` est le libellé complet affiché (« Restauration › Grillades »).
+  Il est **toujours recalculé** par `formatCategoryLabel()` côté serveur — jamais saisi
+  à la main, donc jamais désynchronisé du référentiel.
+- `Realisation` suit le même modèle, pour que la galerie publique soit filtrable.
+
+| Écran | Comportement |
+|---|---|
+| `/admin/pages` | Pages regroupées par catégorie, filtre `?categorie=…`, compteurs |
+| `/admin/entreprises` | Même regroupement et même filtre |
+| `/admin/entreprises/[id]` | Sélecteur catégorie → sous-catégorie (dépendant) |
+| `/exemples` | Annuaire public des pages publiées, classé par catégorie |
+| `/realisations` | Galerie filtrable par catégorie |
+
+Le filtre passe par l'URL (`?categorie=restauration`) : chaque vue est partageable,
+indexable et rendue côté serveur, sans JavaScript.
+
+---
+
 ## Architecture du code
 
 ```text
@@ -139,6 +168,7 @@ src/
 │   └── admin/               Barre latérale, tableaux, éditeurs
 └── lib/
     ├── types.ts             Types du domaine (miroir du schéma §30)
+    ├── categories.ts        Référentiel des catégories d'activité (categorie.md)
     ├── data.ts              Couche d'accès aux données (async, prête pour Supabase)
     ├── mock/                Données de démonstration
     ├── site.ts              Configuration du site et liens WhatsApp

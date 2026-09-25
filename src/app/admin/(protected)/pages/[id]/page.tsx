@@ -8,7 +8,7 @@ import { AdminPageHeader } from "@/components/admin/stat-card";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { Button } from "@/components/ui/button";
 import { Card, DetailRow } from "@/components/ui/card";
-import { getBusinessById, getEventCounts } from "@/lib/data";
+import { getBusinessById, getBusinessCategories, getEventCounts } from "@/lib/data";
 import { EVENT_LABELS } from "@/lib/status";
 import { publicPageUrl } from "@/lib/utils";
 
@@ -28,6 +28,7 @@ export default async function AdminPageEditorPage({
   }
 
   const counts = await getEventCounts(business.id);
+  const categories = await getBusinessCategories();
   const totalClicks = Object.entries(counts)
     .filter(([type]) => type !== "PAGE_VIEW")
     .reduce((sum, [, value]) => sum + value, 0);
@@ -58,7 +59,7 @@ export default async function AdminPageEditorPage({
       />
 
       <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
-        <BusinessEditor business={business} />
+        <BusinessEditor business={business} categories={categories} />
 
         <div className="flex flex-col gap-6">
           <Card className="p-6">
