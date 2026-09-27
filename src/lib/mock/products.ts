@@ -18,8 +18,8 @@ export const PRODUCTS: Product[] = [
       "La Carte Avis+ tient dans un portefeuille et remplace vos cartes de visite papier. Votre client scanne le QR Code ou approche son téléphone : il arrive directement sur votre page digitale, où il peut laisser un avis Google, vous écrire sur WhatsApp ou trouver votre boutique.\n\nNous imprimons votre logo, votre nom et l'adresse de votre page. Nous programmons ensuite la puce NFC avec la même adresse : le QR Code et le NFC mènent toujours au même endroit, et vous pouvez modifier vos liens plus tard sans changer de carte.",
     price: 7500,
     currency: "FCFA",
-    imageUrl: "/images/carte-nfc-avis.webp",
-    gallery: ["/images/carte-nfc-avis.webp", "/images/presentation-noir-nfc-qr.png"],
+    imageUrl: "/images/carte-nfc-avis.png",
+    gallery: ["/images/carte-nfc-avis.png", "/images/plaque-posee.webp"],
     type: "carte",
     features: [
       "Format carte de visite (85 × 55 mm)",
@@ -50,11 +50,11 @@ export const PRODUCTS: Product[] = [
       "La Plaque Avis+ est notre support le plus complet. Elle se pose sur un comptoir, une caisse ou une réception, et attire naturellement le regard de vos clients au moment où ils règlent.\n\nElle réunit le QR Code et la puce NFC sur une seule face, avec votre logo et le message de votre choix. Nous l'installons nous-mêmes chez vous et nous testons le scan et le NFC devant vous, pour être sûrs que tout fonctionne avant de partir.",
     price: 25000,
     currency: "FCFA",
-    imageUrl: "/images/presentation-noir-nfc-qr.png",
+    imageUrl: "/images/plaque-posee.webp",
     gallery: [
-      "/images/presentation-noir-nfc-qr.png",
+      "/images/plaque-posee.webp",
       "/images/support-noir.webp",
-      "/images/support-details-techniques.png",
+      "/images/plaque-murale.png",
     ],
     type: "plaque",
     features: [
@@ -86,8 +86,8 @@ export const PRODUCTS: Product[] = [
       "Le Sticker Avis+ se colle là où vos clients passent : vitrine, caisse, menu, carton d'emballage ou véhicule de livraison. Il fonctionne exactement comme la plaque — QR Code et NFC — mais sans occuper d'espace.\n\nNous fournissons plusieurs formats dans un même lot pour que vous puissiez équiper plusieurs emplacements de votre commerce.",
     price: 5000,
     currency: "FCFA",
-    imageUrl: "/images/supports-personnalises.webp",
-    gallery: ["/images/supports-personnalises.webp", "/images/presentation-bois-nfc-qr.png"],
+    imageUrl: "/images/sticker-autocollant.webp",
+    gallery: ["/images/sticker-autocollant.webp", "/images/plaque-murale.png"],
     type: "sticker",
     features: [
       "Autocollant résistant, usage intérieur et extérieur",
@@ -116,11 +116,11 @@ export const PRODUCTS: Product[] = [
       "Le Pack Commerce est pensé pour un commerce qui veut tout mettre en place en une seule fois. Vous recevez une plaque pour le comptoir, deux cartes pour vos commerciaux et un sticker pour votre vitrine.\n\nNous nous occupons de tout : création de votre page digitale, personnalisation de vos supports, programmation des puces NFC, tests et installation chez vous. Vous n'avez rien à préparer.",
     price: 45000,
     currency: "FCFA",
-    imageUrl: "/images/presentation-bois-nfc-qr.png",
+    imageUrl: "/images/hero-produit.png",
     gallery: [
-      "/images/presentation-bois-nfc-qr.png",
-      "/images/presentation-noir-nfc-qr.png",
-      "/images/telephone-scan.png",
+      "/images/hero-produit.png",
+      "/images/hero-produit-2.png",
+      "/images/carte-nfc-avis.png",
     ],
     type: "pack",
     features: [

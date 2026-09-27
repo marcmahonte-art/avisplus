@@ -16,14 +16,14 @@ export function ProductGallery({ product }: { product: Product }) {
 
   return (
     <div>
-      <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-avis-border bg-avis-soft">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-avis-border bg-white">
         <Image
           src={active}
           alt={product.name}
           fill
           priority
           sizes="(max-width: 1024px) 100vw, 560px"
-          className="object-cover"
+          className="object-contain"
         />
         {product.popular ? (
           <span className="absolute left-4 top-4 rounded-pill bg-avis-primary px-3 py-1 text-caption font-semibold text-avis-black shadow-sm">
@@ -42,11 +42,11 @@ export function ProductGallery({ product }: { product: Product }) {
                 aria-label={`Afficher le visuel ${images.indexOf(image) + 1} de ${product.name}`}
                 aria-pressed={active === image}
                 className={cn(
-                  "relative size-20 overflow-hidden rounded-md border-2 transition-colors duration-fast ease-out",
+                  "relative size-20 overflow-hidden rounded-md border-2 bg-white transition-colors duration-fast ease-out",
                   active === image ? "border-avis-primary" : "border-avis-border hover:border-avis-black/30",
                 )}
               >
-                <Image src={image} alt="" fill sizes="80px" className="object-cover" />
+                <Image src={image} alt="" fill sizes="80px" className="object-contain" />
               </button>
             </li>
           ))}

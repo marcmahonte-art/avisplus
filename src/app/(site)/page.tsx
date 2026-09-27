@@ -165,7 +165,7 @@ export default async function HomePage() {
                   src="/images/demo-page-digitale.png"
                   alt="Exemple de page digitale Avis+ affichée sur un téléphone"
                   width={680}
-                  height={1200}
+                  height={1126}
                   sizes="340px"
                   className="h-auto w-full"
                 />
@@ -282,13 +282,13 @@ export default async function HomePage() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {realisations.slice(0, 3).map((realisation) => (
               <Card key={realisation.id} interactive className="overflow-hidden">
-                <div className="relative aspect-[4/3] bg-avis-soft">
+                <div className="relative aspect-[4/3] bg-white">
                   <Image
                     src={realisation.imageUrl}
                     alt={`Support Avis+ installé chez ${realisation.businessName}`}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
+                    className="object-contain p-4"
                   />
                 </div>
                 <div className="p-5">

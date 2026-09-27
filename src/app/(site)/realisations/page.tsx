@@ -76,13 +76,13 @@ export default async function RealisationsPage({
               {visibleRealisations.map((realisation) => (
                 <li key={realisation.id}>
                   <Card interactive className="h-full overflow-hidden">
-                    <div className="relative aspect-[4/3] bg-avis-soft">
+                    <div className="relative aspect-[4/3] bg-white">
                       <Image
                         src={realisation.imageUrl}
                         alt={`Support Avis+ installé chez ${realisation.businessName}`}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover"
+                        className="object-contain p-4"
                       />
                     </div>
                     <div className="p-6">

@@ -274,5 +274,32 @@ npm run typecheck  # Vérification TypeScript sans émission
 ## Crédits
 
 Visuels produits et planches de présentation fournis dans `public/images/`.
+
+Les visuels sources fournis par le client sont conservés dans `docs/image/`. Pour les
+remplacer par une nouvelle version, déposer le fichier dans `docs/image/`, le convertir
+en visuel web (voir ci-dessous), l'installer dans `public/images/` puis mettre à jour la
+référence — c'est le **nom du fichier** qui détermine l'emplacement sur le site.
+
+| Fichier `public/images/`      | Usage sur le site                                 | Source `docs/image/`      |
+| ----------------------------- | ------------------------------------------------- | ------------------------- |
+| `hero-produit.png`            | Hero de l'accueil (`marketing/hero.tsx`), Open Graph | `hero  1.png` (fond transparent) |
+| `hero-produit-2.png`          | Pack Commerce, variante de présentation           | `hero  2.png` (fond transparent) |
+| `plaque-posee.webp`           | Produit « Plaque », section Comment ça marche      | `plaque 2.png`            |
+| `plaque-murale.png`           | Plaque murale, galerie de réalisations            | `plaque.png`              |
+| `carte-nfc-avis.png`          | Produit « Carte »                                 | `carte avis 2.png`        |
+| `support-noir.webp`           | Support de table noir, réalisations               | `hub-standard-black.png`  |
+| `sticker-autocollant.webp`    | Produit « Sticker »                               | `sticker autocollant.png` |
+| `demo-page-digitale.png`      | Aperçu de page digitale (accueil)                 | `Clients view.png`        |
+
+Contraintes de conversion :
+
+- `hero  1.png` et `hero  2.png` ont un **fond transparent** : les enregistrer en PNG et
+  ne jamais les convertir en JPEG (le fond deviendrait noir).
+- Les autres sources sont à fond uni clair : WebP qualité 85–90 suffit.
+- Ne pas dépasser 1400 px de large : les visuels sont affichés en 520 px maximum.
+
+Les trois PNG `logo-avis*.png` du dépôt d'origine ont été supprimés : le logo est
+construit typographiquement dans `src/components/brand/logo.tsx` (design system §9).
+
 Documents de référence : `CAHIER_DES_CHARGES_AVIS_PLUS_V1.md` et
 `DESIGN_SYSTEM_AVIS_PLUS.md`.

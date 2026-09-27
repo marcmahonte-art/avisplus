@@ -115,10 +115,10 @@ export default async function CommentCaMarchePage() {
 
             <Card className="overflow-hidden p-0">
               <Image
-                src="/images/presentation-noir-nfc-qr.png"
+                src="/images/plaque-posee.webp"
                 alt="Plaque Avis+ avec QR Code et puce NFC, accompagnée de sa page digitale"
-                width={1080}
-                height={1080}
+                width={1000}
+                height={616}
                 sizes="(max-width: 1024px) 100vw, 560px"
                 className="h-auto w-full"
               />

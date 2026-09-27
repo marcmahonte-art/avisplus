@@ -100,9 +100,9 @@ export function Hero() {
               <div className="overflow-hidden rounded-2xl border border-avis-border bg-avis-soft shadow-lg">
                 <Image
                   src="/images/hero-produit.png"
-                  alt="Plaque Avis+ avec QR Code et puce NFC, et sa page digitale affichée sur un téléphone"
-                  width={1080}
-                  height={1080}
+                  alt="Support Avis+ noir avec QR Code et puce NFC, accompagné de sa page digitale sur téléphone"
+                  width={1124}
+                  height={754}
                   priority
                   sizes="(max-width: 1024px) 100vw, 520px"
                   className="h-auto w-full"

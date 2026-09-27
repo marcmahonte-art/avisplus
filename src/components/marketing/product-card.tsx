@@ -25,7 +25,7 @@ export function ProductCard({
       {/* Visuel */}
       <Link
         href={`/produits/${product.slug}`}
-        className="relative block aspect-[4/3] overflow-hidden bg-avis-soft"
+        className="relative block aspect-[4/3] overflow-hidden bg-white"
         aria-label={`Voir la fiche de ${product.name}`}
       >
         <Image
@@ -33,7 +33,7 @@ export function ProductCard({
           alt={product.name}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-          className="object-cover transition-transform duration-slow ease-out hover:scale-[1.03]"
+          className="object-contain p-4 transition-transform duration-slow ease-out hover:scale-[1.03]"
         />
         {product.popular ? (
           <Badge tone="accent" className="absolute left-4 top-4 shadow-sm">
@@ -94,8 +94,8 @@ export function ProductCard({
 export function ProductCardCompact({ product }: { product: Product }) {
   return (
     <Card className="flex items-center gap-4 p-4">
-      <div className="relative size-16 shrink-0 overflow-hidden rounded-md bg-avis-soft">
-        <Image src={product.imageUrl} alt={product.name} fill sizes="64px" className="object-cover" />
+      <div className="relative size-16 shrink-0 overflow-hidden rounded-md bg-white">
+        <Image src={product.imageUrl} alt={product.name} fill sizes="64px" className="object-contain" />
       </div>
       <div className="min-w-0 flex-1">
         <p className="truncate text-body-sm font-semibold text-avis-black">{product.name}</p>

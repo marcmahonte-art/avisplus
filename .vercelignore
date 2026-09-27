@@ -31,6 +31,16 @@ avis-*.zip
 *.eps
 *.tsbuildinfo
 
+# Sources brutes additionnelles (visuels concurrents, exports, videos de travail)
+*.mp4
+*.gif
+PLAQUE-AVIS-GOOGLE-*.jpg
+Plaque-d-*.webp
+QR-Code.png
+avisnnnnnew.png
+plaque-avis-google*.webp
+[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]-*.png
+
 # Secrets
 .env
 .env.*

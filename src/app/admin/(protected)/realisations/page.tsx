@@ -42,13 +42,13 @@ export default async function AdminRealisationsPage() {
             {pending.map((realisation) => (
               <li key={realisation.id}>
                 <Card className="overflow-hidden">
-                  <div className="relative aspect-[4/3] bg-avis-soft">
+                  <div className="relative aspect-[4/3] bg-white">
                     <Image
                       src={realisation.imageUrl}
                       alt={`Support installé chez ${realisation.businessName}`}
                       fill
                       sizes="(max-width: 640px) 100vw, 33vw"
-                      className="object-cover"
+                      className="object-contain p-4"
                     />
                   </div>
                   <div className="p-5">
@@ -83,13 +83,13 @@ export default async function AdminRealisationsPage() {
           {published.map((realisation) => (
             <li key={realisation.id}>
               <Card className="overflow-hidden">
-                <div className="relative aspect-[4/3] bg-avis-soft">
+                <div className="relative aspect-[4/3] bg-white">
                   <Image
                     src={realisation.imageUrl}
                     alt={`Support installé chez ${realisation.businessName}`}
                     fill
                     sizes="(max-width: 640px) 100vw, 33vw"
-                    className="object-cover"
+                    className="object-contain p-4"
                   />
                 </div>
                 <div className="p-5">
