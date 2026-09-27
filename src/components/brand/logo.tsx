@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 
 type LogoVariant = "color" | "monochrome" | "white";
@@ -5,9 +7,9 @@ type LogoVariant = "color" | "monochrome" | "white";
 interface LogoProps {
   /**
    * §9 — Traitement du logo :
-   * - `color` : `AVIS` noir, `+` jaune/or (usage par défaut)
-   * - `monochrome` : `AVIS` noir, `+` gris
-   * - `white` : version pour fonds sombres
+   * - `color` : logo officiel noir et gris, pour fonds clairs (usage par défaut)
+   * - `monochrome` : même fichier, pour les contextes discrets (signature de page digitale)
+   * - `white` : version claire, pour fonds sombres
    */
   variant?: LogoVariant;
   /** Taille de rendu. */
@@ -17,46 +19,49 @@ interface LogoProps {
   asText?: boolean;
 }
 
-const SIZES: Record<NonNullable<LogoProps["size"]>, string> = {
-  sm: "text-xl",
-  md: "text-2xl",
-  lg: "text-3xl",
-  xl: "text-5xl",
+/**
+ * Dimensions intrinsèques du fichier dans `public/images/` (732 × 192).
+ * Le ratio est fixe : la hauteur pilote la largeur, jamais l'inverse.
+ */
+const RATIO = 732 / 192;
+
+/** Hauteur de rendu en pixels, par taille (alignée sur l'échelle typographique). */
+const HAUTEURS: Record<NonNullable<LogoProps["size"]>, number> = {
+  sm: 20,
+  md: 26,
+  lg: 34,
+  xl: 56,
 };
 
 /**
- * Logo Avis+.
+ * Logo Avis+ — image officielle fournie par le client.
  *
- * Construit typographiquement (plutôt qu'en image) pour rester net à toutes les tailles
- * et ne peser aucun octet. Respecte les règles du design system §9 : `AVIS` en noir,
- * `+` en gris ou en jaune/or, jamais de déformation ni d'ombre.
+ * Le fichier livré comporte 282 px de transparent en haut et 302 px en bas : il a
+ * été recadré sur la boîte englobante réelle avant publication dans
+ * `public/images/`, afin que le logo s'aligne correctement sur la ligne de texte
+ * voisine. Ne pas re-rogner le fichier, ne pas lui ajouter de marge.
+ *
+ * Les deux variantes sont strictement le même dessin : `logo-avis.png` pour les
+ * fonds clairs, `logo-avis-blanc.png` pour les fonds sombres.
  */
 export function Logo({ variant = "color", size = "md", className, asText = true }: LogoProps) {
-  const plusColor =
-    variant === "color"
-      ? "text-avis-primary"
-      : variant === "white"
-        ? "text-white/60"
-        : "text-slate-400";
-
-  const textColor = variant === "white" ? "text-white" : "text-avis-black";
+  const hauteur = HAUTEURS[size];
+  const largeur = Math.round(hauteur * RATIO);
+  const source = variant === "white" ? "/images/logo-avis-blanc.png" : "/images/logo-avis.png";
 
   return (
-    <span
-      className={cn(
-        "inline-flex select-none items-baseline font-bold leading-none tracking-[-0.045em]",
-        SIZES[size],
-        textColor,
-        className,
-      )}
+    <Image
+      src={source}
+      alt={asText ? "Avis+" : ""}
       aria-label={asText ? "Avis+" : undefined}
       aria-hidden={asText ? undefined : true}
-    >
-      AVIS
-      <span className={cn("ml-[0.02em]", plusColor)} aria-hidden="true">
-        +
-      </span>
-    </span>
+      width={largeur}
+      height={hauteur}
+      // Le logo est visible sur presque toutes les pages : il ne doit jamais
+      // provoquer de décalage de mise en page pendant le chargement.
+      style={{ height: hauteur, width: "auto" }}
+      className={cn("block select-none", className)}
+    />
   );
 }
 
