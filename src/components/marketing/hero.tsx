@@ -94,20 +94,19 @@ export function Hero() {
             </p>
           </div>
 
-          {/* Colonne visuelle */}
+          {/* Colonne visuelle — le visuel est détouré (PNG transparent) : posé
+              directement sur le fond du Hero, sans cadre ni carte blanche. */}
           <div className="relative animate-fade-up animation-delay-100">
-            <div className="relative mx-auto max-w-[520px]">
-              <div className="overflow-hidden rounded-2xl border border-avis-border bg-avis-soft shadow-lg">
-                <Image
-                  src="/images/hero-produit.png"
-                  alt="Support Avis+ noir avec QR Code et puce NFC, accompagné de sa page digitale sur téléphone"
-                  width={1124}
-                  height={754}
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 520px"
-                  className="h-auto w-full"
-                />
-              </div>
+            <div className="relative mx-auto max-w-[560px]">
+              <Image
+                src="/images/hero-produit.png"
+                alt="Support Avis+ noir avec QR Code et puce NFC, accompagné de sa page digitale sur téléphone"
+                width={1124}
+                height={754}
+                priority
+                sizes="(max-width: 1024px) 100vw, 560px"
+                className="h-auto w-full drop-shadow-xl"
+              />
 
               {/* Badge flottant : note Google */}
               <div className="absolute -left-3 top-8 hidden items-center gap-2.5 rounded-lg border border-avis-border bg-white px-3.5 py-2.5 shadow-md sm:flex">
