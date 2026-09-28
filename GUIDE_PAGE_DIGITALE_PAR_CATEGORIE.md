@@ -227,7 +227,7 @@ Une fois la page active, ouvrez son URL `/p/<slug>` et contrôlez ces 6 points :
 | Photographe, Studio | Carte (Profil + Portfolio + WhatsApp) |
 | ONG, Association | Carte (Profil + Contact) |
 
-**Rappel des tarifs :** Sticker 5 000 · Carte 7 500 · Plaque 25 000 · Pack Commerce 45 000 FCFA.
+**Rappel des tarifs :** Sticker 5 000 · Carte 7 500 · Plaque 15 000 · Pack Commerce 35 000 FCFA.
 
 ---
 

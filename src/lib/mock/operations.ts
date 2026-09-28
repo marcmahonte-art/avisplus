@@ -33,7 +33,7 @@ export const ORDERS: Order[] = [
     address: "Avenue de la Résistance, face au marché",
     status: "NOUVELLE",
     paymentStatus: "PENDING",
-    totalAmount: 25000,
+    totalAmount: 15000,
     currency: "FCFA",
     digital: {
       logoUrl: null,
@@ -49,7 +49,7 @@ export const ORDERS: Order[] = [
     installationMode: "OUAGADOUGOU",
     notes: "Souhaite une plaque noire mate.",
     items: [
-      { id: "oi_1", orderId: "ord_0008", productId: "prd_plaque", productName: "Plaque Avis+", quantity: 1, unitPrice: 25000, options: { Base: "Noir mat", Orientation: "Verticale" } },
+      { id: "oi_1", orderId: "ord_0008", productId: "prd_plaque", productName: "Plaque Avis+", quantity: 1, unitPrice: 15000, options: { Base: "Noir mat", Orientation: "Verticale" } },
     ],
     timeline: [{ status: "NOUVELLE", at: "2026-09-25T07:40:00.000Z", note: "Commande reçue depuis le site." }],
     createdAt: "2026-09-25T07:40:00.000Z",
@@ -69,7 +69,7 @@ export const ORDERS: Order[] = [
     address: "Rue 14.28, à côté de la station",
     status: "A_CONTACTER",
     paymentStatus: "PENDING",
-    totalAmount: 45000,
+    totalAmount: 35000,
     currency: "FCFA",
     digital: {
       logoUrl: null,
@@ -85,7 +85,7 @@ export const ORDERS: Order[] = [
     installationMode: "OUAGADOUGOU",
     notes: null,
     items: [
-      { id: "oi_2", orderId: "ord_0007", productId: "prd_pack", productName: "Pack Commerce", quantity: 1, unitPrice: 45000, options: { "Base de plaque": "Bois naturel", "Couleur de carte": "Noir" } },
+      { id: "oi_2", orderId: "ord_0007", productId: "prd_pack", productName: "Pack Commerce", quantity: 1, unitPrice: 35000, options: { "Base de plaque": "Bois naturel", "Format des stickers": "Rond 50 mm" } },
     ],
     timeline: [
       { status: "NOUVELLE", at: "2026-09-24T09:10:00.000Z" },
@@ -149,7 +149,7 @@ export const ORDERS: Order[] = [
     address: "Avenue Charles de Gaulle",
     status: "INSTALLATION_PROGRAMMEE",
     paymentStatus: "PAID",
-    totalAmount: 50000,
+    totalAmount: 30000,
     currency: "FCFA",
     digital: {
       logoUrl: null,
@@ -165,7 +165,7 @@ export const ORDERS: Order[] = [
     installationMode: "OUAGADOUGOU",
     notes: "Deux plaques : une au comptoir, une en terrasse.",
     items: [
-      { id: "oi_5", orderId: "ord_0005", productId: "prd_plaque", productName: "Plaque Avis+", quantity: 2, unitPrice: 25000, options: { Base: "Bois naturel", Orientation: "Verticale" } },
+      { id: "oi_5", orderId: "ord_0005", productId: "prd_plaque", productName: "Plaque Avis+", quantity: 2, unitPrice: 15000, options: { Base: "Bois naturel", Orientation: "Verticale" } },
     ],
     timeline: [
       { status: "NOUVELLE", at: "2026-09-18T10:20:00.000Z" },
@@ -192,7 +192,7 @@ export const ORDERS: Order[] = [
     address: "Rue 12.34",
     status: "INSTALLEE",
     paymentStatus: "PAID",
-    totalAmount: 45000,
+    totalAmount: 35000,
     currency: "FCFA",
     digital: {
       logoUrl: null,
@@ -208,7 +208,7 @@ export const ORDERS: Order[] = [
     installationMode: "OUAGADOUGOU",
     notes: null,
     items: [
-      { id: "oi_6", orderId: "ord_0004", productId: "prd_pack", productName: "Pack Commerce", quantity: 1, unitPrice: 45000, options: { "Base de plaque": "Noir mat", "Couleur de carte": "Blanc" } },
+      { id: "oi_6", orderId: "ord_0004", productId: "prd_pack", productName: "Pack Commerce", quantity: 1, unitPrice: 35000, options: { "Base de plaque": "Noir mat", "Format des stickers": "Carré 60 mm" } },
     ],
     timeline: [
       { status: "NOUVELLE", at: "2026-09-08T09:45:00.000Z" },
@@ -280,7 +280,7 @@ export const ORDERS: Order[] = [
     address: "Rond-point des Nations Unies",
     status: "TERMINEE",
     paymentStatus: "PAID",
-    totalAmount: 25000,
+    totalAmount: 15000,
     currency: "FCFA",
     digital: {
       logoUrl: null,
@@ -296,7 +296,7 @@ export const ORDERS: Order[] = [
     installationMode: "OUAGADOUGOU",
     notes: null,
     items: [
-      { id: "oi_9", orderId: "ord_0002", productId: "prd_plaque", productName: "Plaque Avis+", quantity: 1, unitPrice: 25000, options: { Base: "Bois naturel", Orientation: "Verticale" } },
+      { id: "oi_9", orderId: "ord_0002", productId: "prd_plaque", productName: "Plaque Avis+", quantity: 1, unitPrice: 15000, options: { Base: "Bois naturel", Orientation: "Verticale" } },
     ],
     timeline: [
       { status: "NOUVELLE", at: "2026-08-10T09:00:00.000Z" },

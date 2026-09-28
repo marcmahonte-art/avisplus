@@ -48,7 +48,7 @@ export const PRODUCTS: Product[] = [
       "Une plaque stable à poser sur un comptoir ou à fixer au mur. Le support le plus demandé par les restaurants, salons et boutiques.",
     longDescription:
       "La Plaque Avis+ est notre support le plus complet. Elle se pose sur un comptoir, une caisse ou une réception, et attire naturellement le regard de vos clients au moment où ils règlent.\n\nElle réunit le QR Code et la puce NFC sur une seule face, avec votre logo et le message de votre choix. Nous l'installons nous-mêmes chez vous et nous testons le scan et le NFC devant vous, pour être sûrs que tout fonctionne avant de partir.",
-    price: 25000,
+    price: 15000,
     currency: "FCFA",
     imageUrl: "/images/plaque-posee.webp",
     gallery: [
@@ -111,30 +111,30 @@ export const PRODUCTS: Product[] = [
     slug: "pack-commerce",
     tagline: "Tout équiper d'un coup, installation comprise.",
     description:
-      "1 plaque, 2 cartes, 1 sticker, la personnalisation, la configuration NFC et l'installation. Le pack le plus complet.",
+      "1 plaque hub, 2 sticker, la personnalisation, la configuration NFC et l'installation. Le pack le plus complet.",
     longDescription:
-      "Le Pack Commerce est pensé pour un commerce qui veut tout mettre en place en une seule fois. Vous recevez une plaque pour le comptoir, deux cartes pour vos commerciaux et un sticker pour votre vitrine.\n\nNous nous occupons de tout : création de votre page digitale, personnalisation de vos supports, programmation des puces NFC, tests et installation chez vous. Vous n'avez rien à préparer.",
-    price: 45000,
+      "Le Pack Commerce est pensé pour un commerce qui veut tout mettre en place en une seule fois. Vous recevez une plaque pour le comptoir et deux stickers à coller sur votre vitrine, votre caisse ou vos emballages.\n\nNous nous occupons de tout : création de votre page digitale, personnalisation de vos supports, programmation des puces NFC, tests et installation chez vous. Vous n'avez rien à préparer.",
+    price: 35000,
     currency: "FCFA",
     imageUrl: "/images/hero-produit.png",
     gallery: [
       "/images/hero-produit.png",
       "/images/hero-produit-2.png",
-      "/images/carte-nfc-avis.png",
+      "/images/sticker-autocollant.webp",
     ],
     type: "pack",
     features: [
-      "1 plaque A5 + 2 cartes + 1 sticker",
+      "1 plaque A5 + 2 stickers",
       "Personnalisation complète incluse",
       "Création de votre page digitale",
       "Configuration QR Code et NFC",
       "Installation et test sur place",
-      "Économie de 12 500 FCFA par rapport à l'achat séparé",
+      "Formation à l'usage de votre page",
     ],
     leadTime: "3 à 5 jours ouvrés",
     options: [
       { name: "Base de plaque", values: ["Bois naturel", "Noir mat"] },
-      { name: "Couleur de carte", values: ["Noir", "Blanc"] },
+      { name: "Format des stickers", values: ["Rond 50 mm", "Carré 60 mm"] },
     ],
     popular: true,
     active: true,
