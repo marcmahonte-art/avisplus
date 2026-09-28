@@ -1,12 +1,13 @@
 /**
  * AVIS+ — Configuration globale du site.
  *
- * ⚠️ Les coordonnées ci-dessous sont des valeurs de lancement à remplacer par les
- * coordonnées réelles d'Avis+. Elles peuvent être surchargées sans toucher au code via
- * les variables d'environnement NEXT_PUBLIC_* (voir `.env.example`).
+ * Les valeurs ci-dessous sont les coordonnées réelles d'Avis+ et servent de
+ * référence. Elles restent surchargeables sans toucher au code via les variables
+ * d'environnement NEXT_PUBLIC_* (voir `.env.example`).
  */
 
-const FALLBACK_PHONE = "+226 70 00 00 00";
+/** Numéro unique d'Avis+ : appels et WhatsApp. Affiché avec espaces. */
+const FALLBACK_PHONE = "+226 66 64 14 14";
 
 /** Numéro WhatsApp au format international, sans espace ni « + » — requis par wa.me. */
 const rawWhatsapp = process.env.NEXT_PUBLIC_WHATSAPP ?? FALLBACK_PHONE;

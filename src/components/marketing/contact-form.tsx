@@ -76,7 +76,7 @@ export function ContactForm() {
           type="tel"
           autoComplete="tel"
           required
-          placeholder="Ex. +226 70 00 00 00"
+          placeholder="Ex. +226 70 12 34 56"
           value={values.phone}
           onChange={(event) => setValues((v) => ({ ...v, phone: event.target.value }))}
         />

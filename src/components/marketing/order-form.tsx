@@ -141,7 +141,7 @@ export function OrderForm({
               type="tel"
               required
               autoComplete="tel"
-              placeholder="Ex. +226 70 00 00 00"
+              placeholder="Ex. +226 70 12 34 56"
             />
           </Field>
 
@@ -151,7 +151,7 @@ export function OrderForm({
               name="customerWhatsapp"
               type="tel"
               required
-              placeholder="Ex. +226 70 00 00 00"
+              placeholder="Ex. +226 70 12 34 56"
             />
           </Field>
 
@@ -303,7 +303,7 @@ export function OrderForm({
               id="whatsapp-entreprise"
               name="businessWhatsapp"
               type="tel"
-              placeholder="Ex. +226 70 00 00 00"
+              placeholder="Ex. +226 70 12 34 56"
             />
           </Field>
 
