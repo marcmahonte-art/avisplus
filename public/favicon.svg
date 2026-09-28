@@ -1,5 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Avis+">
+  <!--
+    Favicon Avis+.
+    Le logotype complet (« AVIS+ ») est au format 3.8:1 : reduit dans un
+    carre de 16 px, la hauteur de capitale tombe a 4 px et devient
+    illisible. On utilise donc le signe « + », element du logotype,
+    dont le trace reste net a toutes les tailles.
+    Geometrie relevee sur le logotype officiel : barres de 45/179 de
+    largeur, centrees, sans agrandissement non proportionnel.
+  -->
   <rect width="64" height="64" rx="14" fill="#050505" />
-  <text x="32" y="45" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="34" font-weight="700" letter-spacing="-1.5" fill="#FFFFFF">A</text>
-  <circle cx="50" cy="17" r="7" fill="#FFB82E" />
+  <g fill="#C9CAC9">
+    <!-- barre horizontale -->
+    <rect x="9" y="26" width="46" height="12" />
+    <!-- barre verticale -->
+    <rect x="26" y="9" width="12" height="46" />
+  </g>
 </svg>
