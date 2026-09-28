@@ -2,8 +2,14 @@ import Link from "next/link";
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
 import { Logo } from "@/components/brand/logo";
+import { FacebookIcon } from "@/components/brand/social-icons";
 import { Container } from "@/components/ui/section";
-import { FOOTER_NAV, SITE, contactWhatsappLink } from "@/lib/site";
+import { FOOTER_NAV, SITE, SOCIALS, contactWhatsappLink } from "@/lib/site";
+
+/** Icône associée à chaque réseau déclaré dans `SOCIALS`. */
+const SOCIAL_ICONS = {
+  Facebook: FacebookIcon,
+} as const;
 
 /** Pied de page du site public — DESIGN_SYSTEM_AVIS_PLUS.md §19 (minimal). */
 export function SiteFooter() {
@@ -63,6 +69,29 @@ export function SiteFooter() {
                 />
                 <span>{SITE.serviceArea}</span>
               </li>
+            </ul>
+
+            {/*
+              Réseaux sociaux — §40. L'icône seule porte le sens : le nom du
+              réseau est fourni aux lecteurs d'écran via `aria-label`.
+            */}
+            <ul className="mt-6 flex flex-wrap items-center gap-2">
+              {SOCIALS.map((social) => {
+                const Icon = SOCIAL_ICONS[social.label];
+                return (
+                  <li key={social.label}>
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Avis+ sur ${social.label}`}
+                      className="flex size-9 items-center justify-center rounded-pill border border-avis-border text-avis-text transition-colors duration-fast hover:border-avis-black hover:bg-avis-soft hover:text-avis-black"
+                    >
+                      <Icon size={18} aria-hidden="true" />
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

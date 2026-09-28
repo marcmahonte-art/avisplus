@@ -31,6 +31,22 @@ export const SITE = {
   address: "Ouagadougou, Burkina Faso",
 } as const;
 
+/**
+ * §40 — Réseaux sociaux officiels d'Avis+.
+ *
+ * Source unique : les icônes du pied de page et de la page contact lisent
+ * cette liste. Pour ajouter un réseau, il suffit de compléter ce tableau
+ * (l'icône correspondante existe dans `components/brand/social-icons.tsx`).
+ */
+export const SOCIALS = [
+  {
+    label: "Facebook",
+    href: "https://web.facebook.com/profile.php?id=61595068613511",
+    /** Couleur officielle de la marque, utilisée pour l'icône. */
+    color: "#1877F2",
+  },
+] as const;
+
 /** §11 — Navigation principale du site public. */
 export const MAIN_NAV = [
   { label: "Accueil", href: "/" },

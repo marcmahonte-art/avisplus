@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 
+import { FacebookIcon } from "@/components/brand/social-icons";
 import { ContactForm } from "@/components/marketing/contact-form";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container, Section, SectionHeading } from "@/components/ui/section";
-import { SITE, contactWhatsappLink } from "@/lib/site";
+import { SITE, SOCIALS, contactWhatsappLink } from "@/lib/site";
 
 /** Page contact — cahier des charges §17. */
 
@@ -45,6 +46,17 @@ export default function ContactPage() {
       href: undefined,
       description: SITE.serviceArea,
     },
+    /**
+     * §40 — Réseaux sociaux. Alimenté par `SOCIALS` dans `lib/site.ts` :
+     * ajouter un réseau là-bas le fait apparaître ici automatiquement.
+     */
+    ...SOCIALS.map((social) => ({
+      icon: FacebookIcon,
+      label: social.label,
+      value: social.label,
+      href: social.href,
+      description: "Suivez nos réalisations et nos nouveautés",
+    })),
   ];
 
   return (
